@@ -16,6 +16,9 @@ func OpenPDFHandler(responseWriter http.ResponseWriter, request *http.Request) {
 	var values = request.URL.Query()
 	var bookName = values.Get("name")
 	responseWriter.Header().Add("Content-Type", "application/json")
+	responseWriter.Header().Add("Access-Control-Allow-Origin",  "*")
+	responseWriter.Header().Add("Access-Control-Allow-Methods", "*")
+	responseWriter.Header().Add("Access-Control-Allow-Headers", "*")
 	fmt.Fprint(responseWriter, "{\"success\": " + strconv.FormatBool(searchBookAndOpen(bookName)) +"}")
 	
 }
